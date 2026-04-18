@@ -1,0 +1,281 @@
+.tabbar {
+  --tabbar-scrollbar-size: 12px;
+  --tabbar-bg: var(--surface);
+  --tabbar-fg: color-mix(in srgb, var(--text) 78%, #fffaf0 22%);
+  --tabbar-fg-strong: var(--text);
+  --tabbar-muted: color-mix(in srgb, var(--text-muted) 86%, #fffaf0 14%);
+  --tabbar-accent: var(--primary);
+  --tabbar-accent-soft: var(--primary-soft);
+  display: flex;
+  align-items: end;
+  gap: 0.5rem;
+  overflow: hidden;
+  min-height: 0px;
+  height: 40px;
+  max-height: 60px;
+  padding: 0rem 0.9rem;
+  background: var(--tabbar-bg);
+  border: none;
+  margin: 1rem 1rem 0;
+  box-shadow: var(--shadow-soft);
+}
+
+.tabbar--graphite {
+  --tabbar-bg: linear-gradient(180deg, #d9dde3 0%, #bcc4cf 100%);
+  --tabbar-fg: #2e3847;
+  --tabbar-fg-strong: #1c2532;
+  --tabbar-muted: #5c6879;
+  --tabbar-accent: #506683;
+  --tabbar-accent-soft: #d8e2ef;
+}
+
+.tabbar--ocean {
+  --tabbar-bg: linear-gradient(180deg, #dfeff5 0%, #bfd8e7 100%);
+  --tabbar-fg: #17384a;
+  --tabbar-fg-strong: #0d2836;
+  --tabbar-muted: #42657a;
+  --tabbar-accent: #1d6c8d;
+  --tabbar-accent-soft: #d8eef7;
+}
+
+.tabbar__scroller-shell {
+  flex: 1 1 auto;
+  min-width: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+.tabbar__scroller {
+  display: flex;
+  
+  min-width: 0;
+  width: auto;
+  max-width: calc(100vw - 22px);
+  height: calc(100% + var(--tabbar-scrollbar-size));
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: var(--tabbar-scrollbar-size);
+  margin-bottom: calc(var(--tabbar-scrollbar-size) * -1);
+
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: rgba(120,120,120,0.5) transparent;
+}
+
+/* Chromium / Safari */
+.tabbar__scroller::-webkit-scrollbar {
+  height: 4px;
+}
+
+.tabbar__scroller::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.tabbar__scroller::-webkit-scrollbar-thumb {
+  background: rgba(120, 120, 120, 0.4);
+  border-radius: 999px;
+}
+
+/* subtle hover like VS Code */
+.tabbar__scroller::-webkit-scrollbar-thumb:hover {
+  background: rgba(120, 120, 120, 0.7);
+}
+
+.tabbar__track {
+  --tab-max-width: 240px;
+  --tab-min-width: calc(18px + 1.6rem);
+  padding: 0rem 1rem 0 1rem;
+  display: flex;
+  align-items: end;
+  gap: 0.45rem;
+  min-width: 100%;
+}
+
+.tabbar__tab {
+  position: relative;
+  display: inline-flex;
+  flex: 1 1 var(--tab-max-width);
+  align-items: center;
+  gap: 0.45rem;
+  width: var(--tab-max-width);
+  min-width: var(--tab-min-width);
+  max-width: var(--tab-max-width);
+  height: 36px;
+  padding: 0 0.8rem;
+  border: none;
+  outline: none;
+
+  background: inherit;
+  color: var(--tabbar-fg);
+  opacity: 0.86;
+  cursor: pointer;
+  container-type: inline-size;
+}
+
+.tabbar__tab:hover {
+}
+
+.tabbar__tab--active {
+  position: relative;
+  border-radius: 10px 10px 0px 0px;
+  background: var(--surface-strong);
+  color: var(--tabbar-fg-strong);
+  opacity: 1;
+}
+.tabbar__tab--active::before {
+  content: "";
+  position: absolute;
+  left: -10px;
+  bottom: -0px;
+  width: 10px;
+  height: 10px;
+  background: transparent;
+  border-bottom-right-radius: 10px;
+  box-shadow: 5px 5px 0 5px var(--surface-strong);
+}
+
+/* RIGHT smooth cut */
+.tabbar__tab--active::after {
+  content: "";
+  position: absolute;
+  right: -10px;
+  bottom: -0px;
+  width: 10px;
+  height: 10px;
+  background: transparent;
+  border-bottom-left-radius: 10px;
+  box-shadow: -5px 5px 0 5px var(--surface-strong);
+}
+
+.tabbar__icon {
+  flex: 0 0 18px;
+  width: 18px;
+  min-width: 18px;
+  height: 18px;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: color-mix(in srgb, var(--tabbar-accent) 78%, #fffaf0 22%);
+  background: color-mix(in srgb, var(--tabbar-accent-soft) 84%, #fffaf0 16%);
+  border: 1px solid color-mix(in srgb, var(--tabbar-accent) 18%, var(--line) 82%);
+}
+
+.tabbar__title {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: left;
+  font-size: 0.84rem;
+  font-weight: 500;
+  letter-spacing: 0.012em;
+}
+
+.tabbar__close {
+  flex: 0 1 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  min-width: 0;
+  height: 18px;
+  overflow: hidden;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  color: var(--tabbar-muted);
+  opacity: 0;
+  transform: scale(0.9);
+  transition: all 180ms var(--ease-smooth);
+}
+
+.tabbar__tab--active .tabbar__close {
+  flex: 0 0 18px;
+  opacity: 1;
+  transform: scale(1);
+}
+
+.tabbar__tab:hover .tabbar__close,
+.tabbar__tab:focus-visible .tabbar__close,
+.tabbar__tab--active .tabbar__close {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.tabbar__close:hover,
+.tabbar__close:focus-visible {
+  background: color-mix(in srgb, var(--tabbar-accent-soft) 72%, #fffaf0 28%);
+  color: color-mix(in srgb, var(--tabbar-accent) 82%, #fffaf0 18%);
+  outline: none;
+  transform: scale(1.05);
+}
+
+@container (max-width: 72px) {
+  .tabbar__tab--active {
+    justify-content: center;
+  }
+
+  .tabbar__tab--active .tabbar__icon {
+    flex-basis: 0;
+    width: 0;
+    min-width: 0;
+    border-width: 0;
+    margin-right: -0.45rem;
+    opacity: 0;
+  }
+
+  .tabbar__tab--active .tabbar__title {
+    flex-basis: 0;
+    width: 0;
+    min-width: 0;
+    opacity: 0;
+  }
+
+  .tabbar__tab--active .tabbar__close {
+    position: absolute;
+    z-index: 1;
+    left: 50%;
+    opacity: 1;
+    transform: scale(1);
+    translate: -50% 0;
+  }
+}
+
+.tabbar__new {
+  flex: 0 0 auto;
+  width: 30px;
+  height: 30px;
+  margin: 0 0px 3px 0;
+  border: none;
+  border-radius: 999px;
+  background: inherit;
+  color: rgb(255, 250, 240);
+  padding: 0 0 4px 0;
+  font-weight: 700;
+  font-size: 1.05rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.tabbar__new:hover {
+  background: #5b8f83;
+}
+
+.tabbar__new:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.tabbar__new:disabled:hover {
+  background: inherit;
+}
+
+@media (max-width: 768px) {
+  .tabbar {
+    margin: 0.75rem 0.75rem 0;
+    padding: 0rem 0.62rem;
+  }
+}
