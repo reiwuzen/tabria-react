@@ -1,0 +1,214 @@
+:root {
+  color-scheme: light;
+  --bg-start: #f7f4ea;
+  --bg-end: #e6dfd2;
+  --surface: #f5efe2;
+  --surface-strong: #fffaf0;
+  --surface-soft: #ebe2d1;
+  --text: #2d241b;
+  --text-muted: #7b6a58;
+  --primary: #2f7a6b;
+  --primary-soft: #dbece4;
+  --line: #d3c4ae;
+  --line-soft: #e5dac8;
+  --shadow-soft: 0 8px 26px -20px rgba(60, 41, 24, 0.26);
+  --shadow-pop: 0 20px 52px -36px rgba(47, 33, 19, 0.32);
+  --radius-md: 13px;
+  --radius-lg: 18px;
+  --ease-smooth: cubic-bezier(0.22, 0.9, 0.33, 1);
+  --app-bg: linear-gradient(180deg, #f9f4ea 0%, #f3ecdf 100%);
+  --app-chrome-bg: linear-gradient(180deg, #faf4e9cc 0%, #ece3d2cc 100%);
+  --app-content-bg: linear-gradient(180deg, #fffaf2 0%, #f4ede1 100%);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", "SF Pro Text", "Segoe UI", sans-serif;
+  background:
+    radial-gradient(circle at 12% -24%, #fffdf8 0%, #fffdf800 37%),
+    radial-gradient(circle at 85% -10%, #fff7e699 0%, #fff7e600 35%),
+    linear-gradient(165deg, var(--bg-start) 0%, var(--bg-end) 100%);
+  color: var(--text);
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  border: 1px solid var(--line-soft);
+  background: var(--app-bg);
+  box-shadow: var(--shadow-pop);
+  overflow: hidden;
+}
+
+.app__chrome {
+  display: flex;
+  flex-direction: column;
+  border: none;
+  background: var(--app-chrome-bg);
+  backdrop-filter: blur(10px);
+}
+
+.app__chrome .tabbar {
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.app__chrome .accessibility-bar {
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.app__content {
+  flex: 1 1 auto;
+  height: calc(100vh - 92px);
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--app-content-bg);
+}
+
+.app__empty-state {
+  margin: 0;
+  color: var(--text-muted);
+}
+
+.app__content-view {
+  flex: 1 1 auto;
+  min-height: 0;
+  height: 100%;
+  animation: content-enter 240ms var(--ease-smooth);
+  transform-origin: top center;
+}
+
+.app--graphite {
+  --bg-start: #e4e8ef;
+  --bg-end: #c8d0db;
+  --surface: #d7dde6;
+  --surface-strong: #f6f8fb;
+  --surface-soft: #c6ced9;
+  --text: #1f2937;
+  --text-muted: #5d6878;
+  --primary: #4c647f;
+  --primary-soft: #dfe7f0;
+  --line: #b4becb;
+  --line-soft: #c7d0db;
+  --app-bg: linear-gradient(180deg, #edf1f5 0%, #dce3ea 100%);
+  --app-chrome-bg: linear-gradient(180deg, #eef2f7cc 0%, #d4dbe5cc 100%);
+  --app-content-bg: linear-gradient(180deg, #f8fafc 0%, #e8edf4 100%);
+}
+
+.app--ocean {
+  --bg-start: #e8f4f8;
+  --bg-end: #c8dde8;
+  --surface: #d8ebf2;
+  --surface-strong: #f5fbfe;
+  --surface-soft: #c8e0ea;
+  --text: #133241;
+  --text-muted: #507184;
+  --primary: #1f6f8f;
+  --primary-soft: #dceff7;
+  --line: #b8d0dc;
+  --line-soft: #cfe2ea;
+  --app-bg: linear-gradient(180deg, #eff8fc 0%, #dceef5 100%);
+  --app-chrome-bg: linear-gradient(180deg, #edf8fdcc 0%, #d0e4eecc 100%);
+  --app-content-bg: linear-gradient(180deg, #f7fcfe 0%, #e5f2f7 100%);
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--primary) 78%, #fffaf0 22%);
+  outline-offset: 2px;
+}
+
+@media (max-width: 768px) {
+  .app__content {
+    padding: 0.75rem;
+  }
+}
+
+@keyframes content-enter {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.995);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --bg-start: #191611;
+    --bg-end: #221d16;
+    --surface: #241f18;
+    --surface-strong: #ffffff;
+    --surface-soft: #342b21;
+    --text: #f1e8da;
+    --text-muted: #bda990;
+    --primary: #7fc3b3;
+    --primary-soft: #23443d;
+    --line: #4a3d2f;
+    --line-soft: #403427;
+    --shadow-soft: 0 10px 28px -20px rgba(0, 0, 0, 0.62);
+    --shadow-pop: 0 24px 52px -34px rgba(0, 0, 0, 0.66);
+  }
+
+  .app {
+    --app-bg: linear-gradient(180deg, #241f18 0%, #1d1913 100%);
+    --app-chrome-bg: linear-gradient(180deg, #2d261ecc 0%, #241f18cc 100%);
+    --app-content-bg: linear-gradient(180deg, #211c15 0%, #1a1611 100%);
+  }
+
+  .app--graphite {
+    --bg-start: #1a212b;
+    --bg-end: #111722;
+    --surface: #1a2230;
+    --surface-strong: #222c3a;
+    --surface-soft: #273243;
+    --text: #e6edf5;
+    --text-muted: #a9b4c4;
+    --primary: #85a2c8;
+    --primary-soft: #24364e;
+    --line: #334153;
+    --line-soft: #2a3647;
+    --app-bg: linear-gradient(180deg, #161d28 0%, #121822 100%);
+    --app-chrome-bg: linear-gradient(180deg, #222c39cc 0%, #18212dcc 100%);
+    --app-content-bg: linear-gradient(180deg, #18212c 0%, #131b25 100%);
+  }
+
+  .app--ocean {
+    --bg-start: #0f2230;
+    --bg-end: #10202b;
+    --surface: #143041;
+    --surface-strong: #1a3a4d;
+    --surface-soft: #1c4358;
+    --text: #e1f0f7;
+    --text-muted: #9ab8c8;
+    --primary: #79bdd8;
+    --primary-soft: #1b4357;
+    --line: #30576a;
+    --line-soft: #27495a;
+    --app-bg: linear-gradient(180deg, #102433 0%, #0d1d29 100%);
+    --app-chrome-bg: linear-gradient(180deg, #19384acc 0%, #133043cc 100%);
+    --app-content-bg: linear-gradient(180deg, #122b3b 0%, #0f2230 100%);
+  }
+}
