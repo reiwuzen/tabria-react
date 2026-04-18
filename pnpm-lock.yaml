@@ -12,8 +12,8 @@ importers:
   .:
     dependencies:
       '@reiwuzen/tabria':
-        specifier: ^1.2.0
-        version: 1.2.0
+        specifier: ^1.3.0
+        version: 1.3.0
       react:
         specifier: ^19.2.0
         version: 19.2.4
@@ -232,8 +232,8 @@ packages:
   '@oxc-project/types@0.115.0':
     resolution: {integrity: sha512-4n91DKnebUS4yjUHl2g3/b2T+IUdCfmoZGhmwsovZCDaJSs+QkVAM+0AqqTxHSsHfeiMuueT75cZaZcT/m0pSw==}
 
-  '@reiwuzen/tabria@1.2.0':
-    resolution: {integrity: sha512-v7vVlQxnolPiDg61v5vtSiAZLmDVcqHSShA1uPhDgOBm27k2Mfu6GyCPcieP++IyojiybaGB00eOEukfH3uXUQ==}
+  '@reiwuzen/tabria@1.3.0':
+    resolution: {integrity: sha512-Zm2zAuBXSh7riAbs+zGRDM2aYnoiniRlR+4DxW33oJkCFLHC+8BFUnCiqKenNeDLEhbDR/EjlcB5IA9OtkiOYw==}
 
   '@rolldown/binding-android-arm64@1.0.0-rc.8':
     resolution: {integrity: sha512-5bcmMQDWEfWUq3m79Mcf/kbO6e5Jr6YjKSsA1RnpXR6k73hQ9z1B17+4h93jXpzHvS18p7bQHM1HN/fSd+9zog==}
@@ -1244,7 +1244,7 @@ snapshots:
 
   '@oxc-project/types@0.115.0': {}
 
-  '@reiwuzen/tabria@1.2.0': {}
+  '@reiwuzen/tabria@1.3.0': {}
 
   '@rolldown/binding-android-arm64@1.0.0-rc.8':
     optional: true
