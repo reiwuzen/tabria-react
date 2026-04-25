@@ -1,5 +1,5 @@
-import { useEffect, useMemo, useState } from "react";
-import type { Workspace } from "../../../tabria";
+import { useMemo, useState } from "react";
+import type { Workspace } from "@reiwuzen/tabria";
 import "./settings.css";
 
 type SettingsProps = {
@@ -66,11 +66,13 @@ const Settings = ({
   const [activeSection, setActiveSection] = useState<SettingsSectionId>("tabs");
   const [openTabsLimit, setOpenTabsLimit] = useState(String(limits.openTabs));
   const [closedTabsLimit, setClosedTabsLimit] = useState(String(limits.closedTabs));
+  const [prevLimits, setPrevLimits] = useState(limits);
 
-  useEffect(() => {
+  if (limits.openTabs !== prevLimits.openTabs || limits.closedTabs !== prevLimits.closedTabs) {
+    setPrevLimits(limits);
     setOpenTabsLimit(String(limits.openTabs));
     setClosedTabsLimit(String(limits.closedTabs));
-  }, [limits.closedTabs, limits.openTabs]);
+  }
 
   const activeSectionMeta = useMemo(() => {
     return SECTIONS.find((section) => section.id === activeSection) ?? SECTIONS[1];

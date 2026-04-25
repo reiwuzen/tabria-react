@@ -1,10 +1,11 @@
 import { type ReactNode, useCallback, useEffect, useState } from "react";
-import type { Page } from "../tabria";
+import type { Page, TabID } from "@reiwuzen/tabria";
 import AccessibilityBar from "./components/accessibilityBar/accessibilityBar";
 import Settings from "./components/settings/settings";
 import TabOptions from "./components/tabOptions/tabOptions";
 import TabSearch from "./components/tabSearch/tabSearch";
 import Tabbar from "./components/tabbar/tabbar";
+import Home from "./components/home/Home";
 import { useTabs } from "./hooks/useTabs";
 import { useWorkspace } from "./hooks/useWorkspace";
 import "./App.css";
@@ -136,6 +137,16 @@ function App() {
           }}
         />
       )
+    : activeTab?.activePage?.url === "about:blank" || !activeTabId
+    ? (
+        <Home
+          openTabCount={openTabCount}
+          closedTabCount={closedTabCount}
+          recentlyClosedTabs={recentlyClosedTabs}
+          onReopenTab={(tabId) => reopenClosedTab(tabId as TabID)}
+          onNewTab={handleNewTab}
+        />
+      )
     : (activePageState as ReactNode);
 
   useEffect(() => {
@@ -231,7 +242,7 @@ function App() {
       </div>
       <div className="app__content">
         <div key={activeTabId ?? "empty"} className="app__content-view">
-          {activeTabId ? activePageContent : <p className="app__empty-state">No opened tabs.</p>}
+          {activePageContent}
         </div>
       </div>
     </main>
