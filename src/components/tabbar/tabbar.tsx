@@ -1,4 +1,4 @@
-import type { Tab, TabID } from "../../../tabria";
+import type { Tab, TabID } from "@reiwuzen/tabria";
 import "./tabbar.css";
 
 type TabbarProps = {
